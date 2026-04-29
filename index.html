@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CineIndia — Indian Cinema Reviews</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">🎬 <span>CineIndia</span></div>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#movies">Movies</a>
+      <a href="#add-review">Add Review</a>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search movies..." />
+      <span class="search-icon">🔍</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">✦ India's Premier Film Review Platform</p>
+      <h1>Discover the Magic of<br/><span>Indian Cinema</span></h1>
+      <p class="hero-sub">Rate, review, and explore Bollywood, Tollywood, Kollywood & more</p>
+      <div class="hero-stats">
+        <div class="stat"><span id="totalMovies">0</span><p>Movies</p></div>
+        <div class="stat"><span id="totalReviews">0</span><p>Reviews</p></div>
+        <div class="stat"><span>4.2★</span><p>Avg Rating</p></div>
+      </div>
+      <a href="#movies" class="btn-primary">Explore Movies</a>
+    </div>
+    <div class="hero-film-strip">
+      <div class="film-strip-inner" id="filmStrip"></div>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="filters-section" id="movies">
+    <div class="filters-wrapper">
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="Bollywood">Bollywood</button>
+        <button class="filter-btn" data-filter="Tollywood">Tollywood</button>
+        <button class="filter-btn" data-filter="Kollywood">Kollywood</button>
+        <button class="filter-btn" data-filter="Mollywood">Mollywood</button>
+      </div>
+      <select id="sortSelect" class="sort-select">
+        <option value="rating">Sort by Rating</option>
+        <option value="year">Sort by Year</option>
+        <option value="title">Sort by Title</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- MOVIE GRID -->
+  <section class="movies-section">
+    <div class="movies-grid" id="moviesGrid"></div>
+  </section>
+
+  <!-- ADD REVIEW SECTION -->
+  <section class="add-review-section" id="add-review">
+    <div class="section-header">
+      <h2>Share Your <span>Review</span></h2>
+      <p>Your opinion matters to the community</p>
+    </div>
+    <form class="review-form" id="reviewForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Movie Title</label>
+          <input type="text" id="movieTitle" placeholder="Enter movie name" required />
+        </div>
+        <div class="form-group">
+          <label>Industry</label>
+          <select id="movieIndustry">
+            <option>Bollywood</option>
+            <option>Tollywood</option>
+            <option>Kollywood</option>
+            <option>Mollywood</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Year</label>
+          <input type="number" id="movieYear" placeholder="2024" min="1900" max="2025" required />
+        </div>
+        <div class="form-group">
+          <label>Director</label>
+          <input type="text" id="movieDirector" placeholder="Director name" />
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>Your Rating</label>
+        <div class="star-input" id="starInput">
+          <span data-val="1">★</span><span data-val="2">★</span>
+          <span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+        </div>
+        <input type="hidden" id="ratingValue" value="0" />
+      </div>
+      <div class="form-group full">
+        <label>Review</label>
+        <textarea id="reviewText" rows="4" placeholder="Write your thoughts about the movie..."></textarea>
+      </div>
+      <div class="form-group full">
+        <label>Poster URL (optional)</label>
+        <input type="url" id="posterUrl" placeholder="https://..." />
+      </div>
+      <button type="submit" class="btn-primary submit-btn">Submit Review ✦</button>
+    </form>
+  </section>
+
+  <!-- MOVIE MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="movieModal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <footer class="footer">
+    <p>🎬 CineIndia — Celebrating the art of Indian Cinema</p>
+    <p class="footer-sub">Made with ❤️ for film lovers</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
